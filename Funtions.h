@@ -7,6 +7,7 @@
 extern sqlite3 *db; // tells other files db exists
 bool UpdateIntoDatabase(int accNoDb,int ChoiceDb,int TempAmountDb,int TempTargetAccount);
 bool GetWholeJnDetails();
+bool RevertLastTransaction();
 bool CheckValidAcccountNo(int tempAcc2);
 void GetAccJnDetails(int TempAcc66);
 bool RemoveTheAccount(int TempACC7);

@@ -94,7 +94,7 @@ int main()
 
 	//Account NewAccount;
 	
-while(Choice !=8){
+while(Choice !=9){
 
 	cout<<"Welcome To Student Banking System "<<endl;
 	cout<<"\n\n\n"<<endl;
@@ -106,7 +106,9 @@ while(Choice !=8){
 	cout<<"5. Show Account"<<endl;
 	cout<<"6. Transaction History"<<endl;
 	cout << "7. Delete " << endl;
-	cout << "8. Exit" << endl;
+	cout << "8. Undu" << endl;
+	cout << "9. Exit" << endl;
+
 
 	cin>>Choice;
 	cin.ignore();
@@ -410,6 +412,21 @@ while(Choice !=8){
 		continue;
 		
 	}
+	else if (Choice == 8 )
+	{
+		cout<<"Reverting last Transaction "<<endl;
+		bool Result8=RevertLastTransaction();
+
+		if(Result8!=true)
+		{
+			cout<<"Error in Reverting"<<endl;
+		}
+		else
+		{
+			cout<<"Done Successfully"<<endl;
+		}
+	}
+
 
 }
 	CloseDB();

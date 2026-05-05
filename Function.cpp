@@ -2,6 +2,48 @@
 #include "Funtions.h"
 
 using namespace std;
+bool RevertLastTransaction()
+{
+	int TempAcc8;
+	int TempMon8;
+	string type8;
+	int TempDestMon8;
+
+
+
+	sqlite3_stmt *sha8;
+	sqlite3_prepare_v2(db,"SELECT * from TransactionHistory order by id DESC limit 1",-1,&sha8,nullptr);
+	if(sqlite3_step(sha8)==SQLITE_ROW)
+	{
+		TempAcc8=sqlite3_column_int(sha8,1);
+		type8=(const char*)sqlite3_column_text(sha8,2);
+		TempMon8=sqlite3_column_int(sha8,3);
+		TempDestMon8=sqlite3_column_int(sha8,3);
+
+	}
+
+	if(type8=="Created")
+	{
+		bool resultOf8=RemoveTheAccount(TempAcc8);
+		return resultOf8;
+	}
+	else if(type8=="Deposite") 
+	{
+		bool resultOf8=GetWithdrawMon(TempAcc8,TempMon8);
+		return resultOf8;
+	
+	}
+	else if (type8=="Withdraw")
+	{
+		bool resultOf8=UpdateDepositeMoney(TempAcc8,TempMon8);
+		return resultOf8;
+	}
+	else if(type8=="Transfer")
+	{
+		bool resultOf8=GetMoneyTransfer(TempDestMon8,TempAcc8,TempMon8);
+		return resultOf8;
+	}
+}
 bool CheckValidAcccountNo(int tempAcc2)
 {
 	sqlite3_stmt *sha88;
