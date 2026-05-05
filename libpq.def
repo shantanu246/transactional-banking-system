@@ -1,0 +1,2 @@
+; C:\MinGW\bin\dlltool.exe -D libpq.dll -z libpq.def -l libpq.a -d C:/Program Files/PostgreSQL/15/lib/libpq.dll
+EXPORTS
